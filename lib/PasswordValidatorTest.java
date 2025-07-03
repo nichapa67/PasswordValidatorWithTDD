@@ -15,7 +15,7 @@ public class PasswordValidatorTest{
         }
 
         // --- เขียน Test Case อื่นๆ ต่อ ---
-        // Test Case 2: รหัสผ่านสั้นควรจะ WEAK
+        // Test Case 2: รหัสผ่านมีตัวอักษรพิมพ์เล็ก หรือ ตัวอักษรพิมพ์ใหญ่ หรือ ตัวเลข หรือ อักขระพิเศษ ควรจะ WEAK
         String pw2="abcdefgh";
         //String pw2="************";
         //String pw2="abcdefghi"; 9ตัว
@@ -29,7 +29,7 @@ public class PasswordValidatorTest{
             System.out.println("Test Case 2 : "+pw2+" \nFAILED: Expected WEAK but got " + result2+"\n");
         }
 
-        // Test Case 3: รหัสผ่านสั้นควรจะ MEDIUM
+        // Test Case 3: รหัสผ่านมีตัวอักษรพิมพ์เล็ก ตัวอักษรพิมพ์ใหญ่ และตัวเลข ควรจะ MEDIUM
         String pw3="Abcdefgh1";
         PasswordStrength result3 = PasswordValidator.validate(pw3);
         if (result3 == PasswordStrength.MEDIUM) {
@@ -38,7 +38,7 @@ public class PasswordValidatorTest{
             System.out.println("Test Case 3 : "+pw3+" \nFAILED: Expected MEDIUM but got " + result3+"\n");
         }
 
-        // Test Case 4: รหัสผ่านสั้นควรจะ STRONG
+        // Test Case 4: รหัสผ่านมีตัวอักษรพิมพ์เล็ก ตัวอักษรพิมพ์ใหญ่ ตัวเลข และอักขระพิเศษ ควรจะ STRONG
         String pw4="AbcdefgH_67";
         //String pw4="AbH_67";
         PasswordStrength result4 = PasswordValidator.validate(pw4);

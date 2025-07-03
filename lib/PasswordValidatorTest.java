@@ -16,7 +16,12 @@ public class PasswordValidatorTest{
 
         // --- เขียน Test Case อื่นๆ ต่อ ---
         // Test Case 2: รหัสผ่านสั้นควรจะ WEAK
-        String pw2="abcdefghi";
+        String pw2="abcdefgh";
+        //String pw2="************";
+        //String pw2="abcdefghi"; 9ตัว
+        //String pw2="Abcdefghi"; up
+        //String pw2="Abcdefgh1"; digit
+        //String pw2="bcdefghi*"; spe
         PasswordStrength result2 = PasswordValidator.validate(pw2);
         if (result2 == PasswordStrength.WEAK) {
             System.out.println("Test Case 2 : "+pw2+" \nPassed : Short password is WEAK.\n");
@@ -35,6 +40,7 @@ public class PasswordValidatorTest{
 
         // Test Case 4: รหัสผ่านสั้นควรจะ STRONG
         String pw4="AbcdefgH_67";
+        //String pw4="AbH_67";
         PasswordStrength result4 = PasswordValidator.validate(pw4);
         if (result4 == PasswordStrength.STRONG) {
             System.out.println("Test Case 4 : "+pw4+" \nPassed : Short password is STRONG.\n");

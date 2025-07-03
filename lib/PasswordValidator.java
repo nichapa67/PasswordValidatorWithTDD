@@ -5,8 +5,13 @@ public class PasswordValidator {
     /**
      * คุณจะต้องเขียน Javadoc ที่สมบูรณ์ที่นี่ในอนาคต
      * เพื่ออธิบายกฎการทำงานของเมธอด
+     * ใช้java
      * @param รับค่า...password string ที่ต้องการตรวจสอบเข้ามา
-     * @return ส่งค่า...passwordStrenght INVALID อื่นๆ
+     * @return ส่งค่า...passwordStrenght ที่บ่งบอกความยากง่ายของการตั้งpassword
+     * โดยไม่สามารถใช้passwordที่มีความยาวต่ำกว่า8ตัวอักษรได้=PasswordStrength.INVALID
+     * PasswordStrength.WEAK เมื่อpasswordมีตัวอักษรพิมพ์เล็ก หรือ ตัวอักษรพิมพ์ใหญ่ หรือ ตัวเลข หรือ อักขระพิเศษ
+     * PasswordStrength.MEDIUM เมื่อpasswordมีตัวอักษรพิมพ์เล็ก ตัวอักษรพิมพ์ใหญ่ และตัวเลข
+     * PasswordStrength.STRONG เมื่อpasswordมีตัวอักษรพิมพ์เล็ก ตัวอักษรพิมพ์ใหญ่ ตัวเลข และอักขระพิเศษ
      */
     // TODO: แก้ไข return type ของเมธอดนี้ให้ถูกต้อง
     public static PasswordStrength validate(String password) { // Function Type ให้เป็น PasswordStrength 
@@ -18,27 +23,27 @@ public class PasswordValidator {
             return PasswordStrength.INVALID;
         }
         //แบบboolean
-        boolean hasLower = false;
-        boolean hasUpper = false;
-        boolean hasDigit = false;
-        boolean hasSpecial = false;
+        boolean Lower = false;
+        boolean Upper = false;
+        boolean Digit = false;
+        boolean Special = false;
 
         for (char c : password.toCharArray()) {
            if (Character.isLowerCase(c)) {
-                hasLower = true;
+                Lower = true;
             } else if (Character.isUpperCase(c)) {
-                hasUpper = true;
+                Upper = true;
             } else if (Character.isDigit(c)) {
-                hasDigit = true;
+                Digit = true;
             } else {
-                hasSpecial = true;
+                Special = true;
             }
         }
 
-        if (hasLower && hasUpper && hasDigit && hasSpecial) {
+        if (Lower && Upper && Digit && Special) {
             return PasswordStrength.STRONG;}
 
-        if (hasLower && hasUpper && hasDigit) {
+        if (Lower && Upper && Digit) {
             return PasswordStrength.MEDIUM;}
 
         return PasswordStrength.WEAK;
